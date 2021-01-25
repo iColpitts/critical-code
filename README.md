@@ -1,4 +1,4 @@
-# critical-code-examples
+# critical-code
 
 ## Build Setup
 
