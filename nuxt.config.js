@@ -30,14 +30,26 @@ export default {
   buildModules: [
   ],
 
+  env: {
+    giphyKey: process.env.GIPHY_KEY || 'R6jMqHMeAMyRbHo7CPuXvNmEimdeeSrg'
+  },
+
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseURL: "https://api.giphy.com/v1/gifs/",
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': { target: 'https://api.example.com/', pathRewrite: {'^/api/': ''}, changeOrigin: true }
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
